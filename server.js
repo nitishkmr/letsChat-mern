@@ -12,6 +12,7 @@ app.use(express.json({ extended: false })); // Now bodyParser is included in exp
 app.get('/', (req, res) => res.send('API running'));
 
 app.use('/user', require('./routes/userRoutes'));
+app.use('/chatroom', require('./routes/chatroomRoutes'));
 
 app.use(notFound); // wrong url handler
 app.use(errorHandler); //for  other errors
