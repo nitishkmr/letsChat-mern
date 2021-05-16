@@ -1,9 +1,16 @@
 body {
-  margin: 0;
+  margin: 10px;
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
   background: linear-gradient(to right, #b92b27, #1565c0);
   height: 100vh;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: auto;
+  text-align: center;
 }
 .card {
   margin-bottom: 20px;
@@ -56,10 +63,11 @@ body {
   font-size: 18px;
   border-radius: 20px;
   width: 100%;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .chatroom button:hover,
+.chatroomAction button:hover,
 .mainButton:hover {
   cursor: pointer;
   background: #ffc107;
@@ -77,4 +85,51 @@ body {
   background: tomato;
   color: #fff;
   border-radius: 10px;
+}
+
+/* Chatroom */
+.chatroomBox {
+  position: absolute;
+  width: 55%;
+  min-width: 450px;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 30px 30px;
+}
+
+.chatroomAction {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: -67%;
+}
+
+.chatroomAction input {
+  display: inline;
+  border: none;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+  /* outline: none; */
+  height: 40px;
+  width: 100%;
+  color: #fff;
+  text-indent: 10px;
+  font-size: 1rem;
+}
+
+.chatroomAction button {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: tomato;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+  width: 130px;
+  margin-left: 20px;
 }

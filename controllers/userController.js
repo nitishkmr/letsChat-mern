@@ -12,7 +12,9 @@ exports.register = async (req, res) => {
     });
     if (userExists) throw new Error('User with same email already exists');
 
-    if (password === undefined) throw new Error('Enter a password');
+    if (name === '') throw new Error('Enter your name');
+    if (email === '') throw new Error('Enter your email');
+    if (password === '') throw new Error('Enter a password');
 
     if (password !== undefined && password.length < 6)
       throw new Error('Enter a password of length equal to or greater than 6');
@@ -28,7 +30,9 @@ exports.register = async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send(err.message);
+    res.status(500).json({
+      message: err.message,
+    });
   }
 };
 
@@ -44,11 +48,13 @@ exports.login = async (req, res) => {
     const token = await jwt.sign({ id: user.id }, process.env.SECRET);
 
     res.json({
-      message: 'User logged in successfully',
+      message: `User ${user.name} logged in`,
       token,
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send(err.message);
+    res.status(500).json({
+      message: err.message,
+    });
   }
 };

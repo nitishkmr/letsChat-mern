@@ -1,6 +1,7 @@
 const Chatroom = require('../models/Chatroom');
 
 exports.createChatroom = async (req, res) => {
+  console.log('createchatroom');
   try {
     const { name } = req.body;
 
@@ -19,4 +20,9 @@ exports.createChatroom = async (req, res) => {
     console.error(err.message);
     res.status(500).send(err.message);
   }
+};
+
+exports.getAllChatrooms = async (req, res) => {
+  const chatrooms = await Chatroom.find({});
+  res.json(chatrooms);
 };
