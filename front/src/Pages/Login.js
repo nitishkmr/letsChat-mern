@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Toast } from 'toaster-js';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const Login = (props) => {
   const emailRef = React.createRef();

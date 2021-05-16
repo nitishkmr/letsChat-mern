@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
   background: linear-gradient(to right, #b92b27, #1565c0);
-  height: 100vh;
+  height: 100%;
 }
 .toast {
   position: fixed;
@@ -89,24 +89,30 @@ body {
 
 /* Chatroom */
 .chatroomBox {
-  position: absolute;
+  position: relative;
   width: 55%;
   min-width: 450px;
-  height: 90%;
+  height: 600px;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 5%);
   box-sizing: border-box;
   padding: 30px 30px;
+}
+
+.chatroomContent {
+  border-bottom: 1px solid;
+  height: 350px;
+  max-height: 350px;
+  overflow: auto;
 }
 
 .chatroomAction {
   display: flex;
   justify-content: space-between;
   position: relative;
-  bottom: -67%;
+  bottom: -5%;
 }
 
 .chatroomAction input {

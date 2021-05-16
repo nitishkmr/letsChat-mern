@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db.js');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware.js');
 const jwt = require('jwt-then');
+const User = require('./models/User.js');
+const Message = require('./models/Message.js');
 const app = express();
 dotenv.config();
 connectDB();
@@ -41,12 +43,39 @@ io.use(async (socket, next) => {
   }
 });
 
+// Sockets .emits from the components and .on is received here
+
 //Whenever someone connects this gets executed
-io.on('connection', (socket) => {
+io.on('connect', (socket) => {
   console.log('Connected: ' + socket.userId);
 
   //Whenever someone disconnects this gets executed
   socket.on('disconnect', () => {
     console.log('Disconnected: ' + socket.userId);
+  });
+
+  socket.on('joinRoom', ({ chatroomId }) => {
+    socket.join(chatroomId);
+    console.log('A user joined chatroom: ' + chatroomId);
+  });
+  socket.on('leaveRoom', ({ chatroomId }) => {
+    socket.leave(chatroomId);
+    console.log('A user left chatroom: ' + chatroomId);
+  });
+  socket.on('chatroomMessage', async ({ chatroomId, message }) => {
+    if (message.trim().length > 0) {
+      const user = await User.findOne({ _id: socket.userId });
+      const newMessage = new Message({
+        chatroom: chatroomId,
+        user: socket.userId,
+        message,
+      });
+      io.to(chatroomId).emit('newMessage', {
+        message,
+        name: user.name,
+        userId: socket.userId,
+      });
+      await newMessage.save();
+    }
   });
 });

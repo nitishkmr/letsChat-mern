@@ -4,6 +4,11 @@ import { Toast } from 'toaster-js';
 import { Link, withRouter } from 'react-router-dom';
 
 const Dashboard = (props) => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    props.history.push('/login');
+  } // access to dashboard only after login
+
   const [chatrooms, setChatrooms] = React.useState([]);
 
   React.useEffect(() => {
