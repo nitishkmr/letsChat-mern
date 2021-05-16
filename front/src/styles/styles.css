@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  background: linear-gradient(to right, #b92b27, #1565c0);
+  height: 100vh;
+}
+.card {
+  margin-bottom: 20px;
+  border: none;
+}
+.box {
+  width: 320px;
+  height: 470px;
+  background: #000;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 30px 30px;
+}
+
+.cardHeader {
+  margin: 20px;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 50px;
+}
+
+.box p {
+  margin: 0;
+  padding: 0;
+}
+
+.box input {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.mainButton {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: tomato;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.chatroom button:hover,
+.mainButton:hover {
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+
+.chatroom {
+  padding: 1%;
+  display: flex;
+  justify-content: space-between;
+}
+.chatroom button {
+  border: none;
+  outline: none;
+  background: tomato;
+  color: #fff;
+  border-radius: 10px;
+}
