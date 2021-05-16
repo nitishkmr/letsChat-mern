@@ -133,3 +133,7 @@ body {
   width: 130px;
   margin-left: 20px;
 }
+
+.ownMessage {
+  color: tomato;
+}

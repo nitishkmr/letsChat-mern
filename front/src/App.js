@@ -26,13 +26,11 @@ function App() {
           token: localStorage.getItem('token'),
         },
       });
-
       newSocket.on('disconnect', () => {
         setSocket(null);
         // setTimeout(setupSocket, 3000);
         new Toast('Socket Disconnected', Toast.TYPE_ERROR, 2000);
       });
-
       newSocket.on('connect', () => {
         new Toast('Socket Connected', Toast.TYPE_DONE, 2000);
       });
