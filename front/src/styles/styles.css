@@ -31,7 +31,7 @@ body {
 }
 
 .cardHeader {
-  margin: 20px;
+  margin: 10px;
   padding: 0 0 20px;
   text-align: center;
   font-size: 50px;
@@ -68,6 +68,7 @@ body {
 
 .chatroom button:hover,
 .chatroomAction button:hover,
+.logoutbutton:hover,
 .mainButton:hover {
   cursor: pointer;
   background: #ffc107;
@@ -87,7 +88,17 @@ body {
   border-radius: 10px;
 }
 
+.logoutbutton {
+  border: none;
+  outline: none;
+  background: tomato;
+  color: #fff;
+  border-radius: 20px;
+  height: 20px;
+}
+
 /* Chatroom */
+
 .chatroomBox {
   position: relative;
   width: 55%;

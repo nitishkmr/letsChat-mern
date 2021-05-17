@@ -1,4 +1,5 @@
 const Chatroom = require('../models/Chatroom');
+const Message = require('../models/Message');
 
 exports.createChatroom = async (req, res) => {
   console.log('createchatroom');
@@ -25,4 +26,21 @@ exports.createChatroom = async (req, res) => {
 exports.getAllChatrooms = async (req, res) => {
   const chatrooms = await Chatroom.find({});
   res.json(chatrooms);
+};
+
+exports.getchatroomInfo = async (req, res) => {
+  try {
+    const { chatroomId } = req.body;
+
+    const chatroom = await Chatroom.findOne({ _id: chatroomId });
+    const prevMessages = await Message.find({ chatroom: chatroomId });
+
+    res.json({
+      chatroomName: chatroom.name,
+      prevMessages,
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send(err.message);
+  }
 };

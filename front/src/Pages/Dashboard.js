@@ -57,8 +57,16 @@ const Dashboard = (props) => {
       });
   };
 
+  const logout = () => {
+    localStorage.removeItem('token');
+    props.history.push('/login');
+  };
+
   return (
     <div className="box">
+      <button className="logoutbutton" onClick={logout}>
+        Logout
+      </button>
       <div className="cardHeader">Chatrooms</div>
       <div className="cardBody">
         <div className="inputGroup">

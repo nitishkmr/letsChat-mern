@@ -69,6 +69,7 @@ io.on('connect', (socket) => {
         chatroom: chatroomId,
         user: socket.userId,
         message,
+        username: user.name,
       });
       io.to(chatroomId).emit('newMessage', {
         message,

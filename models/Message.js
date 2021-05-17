@@ -15,6 +15,10 @@ const messageSchema = new mongoose.Schema({
     type: String,
     required: 'Message is required',
   },
+  username: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('message', messageSchema);
